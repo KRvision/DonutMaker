@@ -1,12 +1,10 @@
-//ITERATION 1
+//ITERATION 1 FEATURE 1
 
 let donutCount = 0;
 
-//Get our button element
-const btn = document.querySelector("button");
-
-function addToDonutCount(amountToAdd) {
-  donutCount = donutCount + amountToAdd;
+//Add donut to donut count
+function addDonut(amount) {
+  donutCount = donutCount + amount;
 }
 
 //Retrieve donut count
@@ -14,29 +12,66 @@ function getDonutCount() {
   return donutCount;
 }
 
-// Purchase Auto Clicks
-let autoClickCount = 0;
+//ITERATION 1 FEATURE 2
 
-function addToAutoClickCount(amountToAdd) {
-  autoClickCount = autoClickCount + amountToAdd;
+let autoClickerCount = 0;
+
+//Add to Auto Clicker
+function addAutoClicker(amount) {
+  autoClickerCount = autoClickerCount + amount;
 }
 
-//Retrieve autoClick count
-function addToAutoClickCount() {
-  return autoClickCount;
-}
-function subtractFromDonutCount(amountToSubtract) {
-  donutCount = donutCount - amountToSubtract;
+//Retrieve Auto Clicker count
+function addToAutoClickerCount() {
+  return autoClickerCount;
 }
 
-//Cost of second Auto Clicker increase
-let autoClickCost = 100;
-
-function autoClickCostIncrease() {
-  autoClickCost = autoClickCost * 1.1;
+//Subtract Auto Clicker cost from donut count
+function subtractFromDonutCount(amount) {
+  donutCount = donutCount - amount;
 }
 
-//Add a click event listener to our donut button
+//ITERATION 1 FEATURE 3
+
+let autoClickerCost = 100;
+
+function autoClickerCostIncrease() {
+  autoClickerCost = autoClickerCost * 1.1;
+}
+
+// ITERATION 1 FEATURE 4
+function purchaseAutoClicker() {
+  if (donutCount >= autoClickerCost) {
+    subtractFromDonutCount(autoClickerCost);
+    addAutoClicker(1);
+    autoClickerCostIncrease();
+  }
+}
+
+//ITERATION 1 FEATURE 5
+function countUp() {
+  donutCount = donutCount + autoClickerCount;
+  console.log(donutCount);
+}
+
+setInterval(countUp, 1000);
+
+//Add a click event listener to activate Auto Clickers
+
+//Get the button element
+const btn = document.querySelector("button");
+
+btn.addEventListener(
+  "click",
+  function () {
+    donutCount++;
+  },
+  1000
+);
+
+/*Add a click event listener to our donut button
+
+
 btn.addEventListener(
   "click",
   function () {
@@ -45,3 +80,6 @@ btn.addEventListener(
   },
   1000
 );
+
+
+*/
