@@ -5,6 +5,12 @@ let donutCount = 0;
 //Add donut to donut count
 function addDonut(amount) {
   donutCount = donutCount + amount;
+  document.getElementById("click-btn").innerText = donutCount;
+  if (donutCount >= autoClickerCost) {
+    enableBtn();
+  } else {
+    disableBtn();
+  }
 }
 
 //Retrieve donut count
@@ -19,24 +25,32 @@ let autoClickerCount = 0;
 //Add to Auto Clicker
 function addAutoClicker(amount) {
   autoClickerCount = autoClickerCount + amount;
+  document.getElementById("auto-count").innerText = autoClickerCount;
 }
 
 //Retrieve Auto Clicker count
-function addToAutoClickerCount() {
+function getAutoClickerCount() {
   return autoClickerCount;
 }
 
 //Subtract Auto Clicker cost from donut count
 function subtractFromDonutCount(amount) {
   donutCount = donutCount - amount;
+  document.getElementById("click-btn").innerText = donutCount;
+  if (donutCount >= autoClickerCost) {
+    enableBtn();
+  } else {
+    disableBtn();
+  }
 }
 
 //ITERATION 1 FEATURE 3
 
-let autoClickerCost = 100;
+let autoClickerCost = 10;
 
 function autoClickerCostIncrease() {
   autoClickerCost = autoClickerCost * 1.1;
+  autoClickerCost = Math.round(autoClickerCost);
 }
 
 // ITERATION 1 FEATURE 4
@@ -50,36 +64,31 @@ function purchaseAutoClicker() {
 
 //ITERATION 1 FEATURE 5
 function countUp() {
-  donutCount = donutCount + autoClickerCount;
-  console.log(donutCount);
+  addDonut(autoClickerCount);
 }
 
 setInterval(countUp, 1000);
 
-//Add a click event listener to activate Auto Clickers
+//Get the donut button element
+const btn = document.getElementById("donuts");
 
-//Get the button element
-const btn = document.querySelector("button");
+//Add a click event listener to our donut button
 
-btn.addEventListener(
-  "click",
-  function () {
-    donutCount++;
-  },
-  1000
-);
+btn.addEventListener("click", function () {
+  addDonut(1);
+});
 
-/*Add a click event listener to our donut button
+//Get the auto_donut button element
+const auto_btn = document.getElementById("auto-btn");
 
+auto_btn.addEventListener("click", function () {
+  purchaseAutoClicker(1);
+});
 
-btn.addEventListener(
-  "click",
-  function () {
-    donutCount++;
-    document.getElementById("nav-menu").innerText = donutCount;
-  },
-  1000
-);
+function disableBtn() {
+  document.getElementById("auto-btn").disabled = true;
+}
 
-
-*/
+function enableBtn() {
+  document.getElementById("auto-btn").disabled = false;
+}
