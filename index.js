@@ -59,6 +59,7 @@ function purchaseAutoClicker() {
     subtractFromDonutCount(autoClickerCost);
     addAutoClicker(1);
     autoClickerCostIncrease();
+    document.getElementById("remaining-clicks").innerText = autoClickerCost;
   }
 }
 
