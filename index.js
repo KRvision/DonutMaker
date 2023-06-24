@@ -93,3 +93,13 @@ function disableBtn() {
 function enableBtn() {
   document.getElementById("auto-btn").disabled = false;
 }
+
+function reset() {
+  autoClickerCount = 0;
+  donutCount = 0;
+  autoClickerCost = 100;
+
+  document.getElementById("auto-count").innerText = autoClickerCount;
+  document.getElementById("click-btn").innerText = donutCount;
+  document.getElementById("remaining-clicks").innerText = autoClickerCost;
+}
